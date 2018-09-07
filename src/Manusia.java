@@ -1,11 +1,11 @@
 #include<stdio.h>
 
 int main() {
-asdfasdfkjdf askjdfn askjdfn kasjdf
-asdfn as;djfkn as;dkljfna s;dfln asd;lfn asdlfkj 
-af asdlfknas;ldfjkn as;djklf nas
-f asldfknas 'dfasdlkn f
-a sdf;alskjdfn ;asldkfn as
-fas dfnkadslf 
+1
+2
+3
+4
+5
+6
 	return 0;
 }
