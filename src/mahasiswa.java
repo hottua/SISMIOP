@@ -3,5 +3,10 @@
 using namespace stdc;
 
 int main() {
-return 0;
+	int a;
+	int b;
+	a = 10;
+	b = 30;
+	printf("%d\n", a+b);
+	return 0;
 }
