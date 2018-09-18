@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head lang="en">
+    <th:block th:replace="root.html :: stylesheet"></th:block>
+</head>
+<body class="hold-transition skin-blue sidebar-mini fixed">
+<div class="wrapper">
+    <th:block th:insert="root :: header"></th:block>
+    <th:block th:insert="root :: sidebar"></th:block>
+
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Permohonan
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-comments-o"></i> Pelayanan</a></li>
+                <li class="active">Permohonan OP</li><li class="active">[[${subTitle}]]</li>
+            </ol>
+        </section>
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">[[${subTitle}]]</h3>
+                            <p th:text="${msg}"></p>
+                            <div class="box-tools">
+                                <div class="input-group input-group-sm" style="width: 250px;">
+                                    <input name="table_search" class="form-control pull-right" placeholder="Search" type="text">
+                                    <div class="input-group-btn">
+                                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Pemilik</th>
+                                    <th>NIK</th>
+                                    <th>Kecamatan</th>
+                                    <th>Kelurahan</th>
+                                    <th>Letak Objek</th>
+                                    <th>Bertindak sebagai</th>
+                                    <th>Luas Tanah</th>
+                                    <th>Status</th>
+                                    <th>Pilihan</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="p : ${page.content}">
+                                    <td th:text="${p.getPenduduk().getNama()}"></td>
+                                    <td th:text="${p.getPenduduk().getNik()}"></td>
+                                    <td th:text="${p.getKecamatan()}"></td>
+                                    <td th:text="${p.getKelurahan()}"></td>
+                                    <td th:text="${p.getLetakObjek()}"></td>
+                                    <td th:text="${p.getBertindakSebagai()}"></td>
+                                    <td th:text="${p.getLuasTanah()}"></td>
+                                    <td th:text="${p.isStatus()} ? 'Disetujui' : 'Belum disetujui'"></td>
+                                    <!--<td th:if="${p.istStatus() == false}">Belum Disetujui</td>-->
+                                    <td><div class="btn-group">
+                                        <button type="button" class="btn btn-success btn-flat dropdown-toggle" data-toggle="dropdown">
+                                            Action
+                                            <span class="caret"></span>
+                                            <span class="sr-only">Toggle Dropdown</span>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li th:if="${p.isStatus()} == false"><a th:href="'/admin/permohonan-op-penduduk/setujui/'+${p.getId()}">Setujui</a></li>
+                                            <li th:if="${p.isStatus()}"><a th:href="'/admin/permohonan-op-penduduk/batal-menyetujui/'+${p.getId()}"href="#">Batal Menyetujui</a></li>
+                                        </ul>
+                                    </div></td>
+                                </tr>
+                                </tbody>
+                                <tbody th:if="${page.totalPages} == 0">
+                                <tr>
+                                    <td colspan="8" align="center">Tidak ada Permohonan OP yang terdaftar</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.box-body -->
+                        <th:block th:if="${page.totalPages} != 0">
+                            <div class="box-footer clearfix">
+                                <ul class="pagination pagination-sm no-margin pull-right">
+                                    <li class="paginate_button previous"><a class="btn " th:classappend="${page.hasPrevious()} ? enabled : disabled" th:href="@{/penduduk/permohonan-op/daftar(page=${page.number-1},size=${page.size})}">&laquo;</a></li>
+                                    <th:block th:each="i: ${#numbers.sequence(0, page.totalPages - 1)}">
+                                        <li th:if="${page.number == i}" class="paginate_button active"><a href="#">[[${i}+1]]</a></li>
+                                        <li th:unless="${page.number == i}"><a th:href="@{/penduduk/permohonan-op/daftar(page=${i},size=${page.size})}">[[${i}+1]]</a></li>
+                                    </th:block>
+                                    <li class="paginate_button next"><a class="btn " th:classappend="${page.hasNext()} ? enabled : disabled" th:href="@{/penduduk/permohonan-op/daftar(page=${page.number+1},size=${page.size})}">&raquo;</a></li>
+                                </ul>
+                            </div>
+                        </th:block>
+
+                    </div>
+                    <!-- /.box -->
+
+
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+
+        </section>
+        <!-- /.content -->
+    </div>
+
+
+
+
+    <th:block th:insert="root :: footer"></th:block>
+    <th:block th:insert="root :: control-sidebar"></th:block>
+</div>
+<th:block th:insert="root :: script"></th:block>
+
+</body>
+</html>

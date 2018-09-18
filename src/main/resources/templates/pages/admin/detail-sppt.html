@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head lang="en">
+    <th:block th:replace="root.html :: stylesheet"></th:block>
+</head>
+<body class="hold-transition skin-blue sidebar-mini fixed">
+<div class="wrapper">
+    <th:block th:insert="root :: header"></th:block>
+    <th:block th:insert="root :: sidebar"></th:block>
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Detail SPPT
+                <small>#[[${spop.getPermohonanOp().getPenduduk().getId()}]]</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-comments-o"></i> Pelayanan</a></li>
+                <li class="active">Daftar SPOP</li><li class="active">[[${subTitle}]]</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="invoice">
+            <!-- title row -->
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2 class="page-header">
+                        <i class="fa fa-globe"></i> Detail SPPT : [[${spop.getId()}]]
+                        <small class="pull-right">[[${dateNow}]]</small>
+                    </h2>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- info row -->
+            <div class="row invoice-info">
+                <div class="col-sm-6 invoice-col">
+                    Letak Objek Pajak :
+                    <address>
+                        <strong>[[${spop.getPermohonanOp().getLetakObjek()}]]</strong><br>
+                    </address>
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-6 invoice-col">
+                    Nama dan Alamat Pemilik :
+                    <address>
+                        <strong>[[${spop.getPermohonanOp().getPenduduk().getNama()}]]</strong><br>
+                        [[${spop.getPermohonanOp().getPenduduk().getAlamat()}]]<br>
+                    </address>
+                </div>
+                <!-- /.col -->
+
+            </div>
+            <!-- /.row -->
+
+            <!-- Table row -->
+            <div class="row">
+                <div class="col-xs-12 table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>OP</th>
+                            <th>Luas (m2)</th>
+                            <th>Harga NJOP per m2</th>
+                            <th>Jumlah NJOP</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Bumi</td>
+                            <td>[[${spop.getPermohonanOp().getLuasTanah()}]]</td>
+                            <td>Rp. 900, -</td>
+                            <td>Rp. [[${spop.getNjopLuasTanah()}]], -</td>
+                        </tr>
+                        <tr>
+                            <td>Bangunan</td>
+                            <td>[[${spop.getPermohonanOp().getLuasBangunan()}]]</td>
+                            <td>Rp. 1000, -</td>
+                            <td>Rp. [[${spop.getNjopLuasBangunan()}]], -</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+
+            <div class="row">
+
+                <div class="col-xs-6">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tr>
+                                <th>Total Harga Pajak:</th>
+                                <td>Rp. [[${totalPajak}]], -</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+
+            <!-- this row will not appear when printing -->
+            <div class="row no-print">
+                <div class="col-xs-12">
+                    <a th:href="'/admin/spop/'+${spop.getId()}+'/detail-sppt/print'" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Export to Pdf</a>
+                </div>
+            </div>
+        </section>
+        <!-- /.content -->
+        <div class="clearfix"></div>
+    </div>
+    <!-- /.content-wrapper -->
+
+
+    <th:block th:insert="root :: footer"></th:block>
+    <th:block th:insert="root :: control-sidebar"></th:block>
+</div>
+<th:block th:insert="root :: script"></th:block>
+
+</body>
+</html>

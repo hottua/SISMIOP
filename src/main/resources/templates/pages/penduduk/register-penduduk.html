@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head lang="en">
+    <th:block th:replace="root.html :: stylesheet"></th:block>
+</head>
+<body class="hold-transition register-page">
+<div class="register-box">
+    <div class="register-logo">
+        <a th:href="@{#}"><b>SISMIOP</b></a>
+    </div>
+
+    <div class="register-box-body">
+        <p class="login-box-msg">Register Penduduk Baru. Mohon isi data yang benar.</p>
+
+        <form autocomplete="off" action="#" th:action="@{/register}"
+              th:object="${penduduk}" method="post" class="form-horizontal"
+              role="form">
+            <div class="form-group has-feedback">
+                <input type="text" class="form-control"
+                       th:field="*{nama}" placeholder="Nama Lengkap" />
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                <span class="help-block" th:if="${#fields.hasErrors('nama')}" th:errors="*{nama}" >err</span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="text" class="form-control"
+                       th:field="*{noTelp}" placeholder="Nomor telepon/HP" />
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                <span class="help-block" th:if="${#fields.hasErrors('noTelp')}" th:errors="*{noTelp}" >err</span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="text" class="form-control"
+                       th:field="*{nik}" placeholder="NIK" />
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                <span class="help-block" th:if="${#fields.hasErrors('nik')}" th:errors="*{nik}" >err</span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="text" class="form-control"
+                       th:field="*{npwp}" placeholder="NPWP" />
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                <span class="help-block" th:if="${#fields.hasErrors('npwp')}" th:errors="*{npwp}" >err</span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="password" class="form-control"
+                       th:field="*{password}" placeholder="Password" />
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                <span class="help-block" th:if="${#fields.hasErrors('password')}" th:errors="*{password}" >err</span>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
+                </div>
+                <!-- /.col -->
+            </div>
+        </form>
+
+        <a th:href="@{/login}" class="text-center">Login disini jika sudah punya akun.</a>
+    </div>
+    <!-- /.form-box -->
+</div>
+<!-- /.register-box -->
+
+<!-- jQuery 3 -->
+<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- iCheck -->
+<script src="../../plugins/iCheck/icheck.min.js"></script>
+<script>
+    $(function () {
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+            increaseArea: '20%' /* optional */
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head lang="en">
+    <th:block th:replace="root.html :: stylesheet"></th:block>
+</head>
+<body onload="window.print();">
+<div class="wrapper">
+
+        <!-- Main content -->
+        <section class="invoice">
+            <!-- title row -->
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2 class="page-header">
+                        <i class="fa fa-globe"></i> Detail SPPT : [[${spop.getId()}]]
+                        <small class="pull-right">[[${dateNow}]]</small>
+                    </h2>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- info row -->
+            <div class="row invoice-info">
+                <div class="col-sm-6 invoice-col">
+                    Letak Objek Pajak :
+                    <address>
+                        <strong>[[${spop.getPermohonanOp().getLetakObjek()}]]</strong><br>
+                    </address>
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-6 invoice-col">
+                    Nama dan Alamat Pemilik :
+                    <address>
+                        <strong>[[${spop.getPermohonanOp().getPenduduk().getNama()}]]</strong><br>
+                        [[${spop.getPermohonanOp().getPenduduk().getAlamat()}]]<br>
+                    </address>
+                </div>
+                <!-- /.col -->
+
+            </div>
+            <!-- /.row -->
+
+            <!-- Table row -->
+            <div class="row">
+                <div class="col-xs-12 table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>OP</th>
+                            <th>Luas (m2)</th>
+                            <th>Harga NJOP per m2</th>
+                            <th>Jumlah NJOP</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Bumi</td>
+                            <td>[[${spop.getPermohonanOp().getLuasTanah()}]]</td>
+                            <td>Rp. 900, -</td>
+                            <td>Rp. [[${spop.getNjopLuasTanah()}]], -</td>
+                        </tr>
+                        <tr>
+                            <td>Bangunan</td>
+                            <td>[[${spop.getPermohonanOp().getLuasBangunan()}]]</td>
+                            <td>Rp. 1000, -</td>
+                            <td>Rp. [[${spop.getNjopLuasBangunan()}]], -</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+
+            <div class="row">
+
+                <div class="col-xs-6">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tr>
+                                <th>Total Harga Pajak:</th>
+                                <td>Rp. [[${totalPajak}]], -</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+
+        </section>
+
+    </div>
+    <!-- /.content-wrapper -->
+
+
+</body>
+</html>

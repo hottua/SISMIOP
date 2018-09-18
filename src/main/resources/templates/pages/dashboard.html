@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
+<head lang="en">
+    <th:block th:replace="root.html :: stylesheet"></th:block>
+</head>
+<body class="hold-transition skin-blue sidebar-mini fixed">
+    <div class="wrapper">
+        <th:block th:insert="root :: header"></th:block>
+        <th:block th:insert="root :: sidebar"></th:block>
+
+
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Dashboard
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                    <li class="active">Dashboard</li>
+                </ol>
+            </section>
+        </div>
+
+
+
+        <th:block th:insert="root :: footer"></th:block>
+        <th:block th:insert="root :: control-sidebar"></th:block>
+    </div>
+    <th:block th:insert="root :: script"></th:block>
+
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorator="index">
+<head lang="en">
+    <meta charset="UTF-8" http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>SISMIOP | Entry SPOP</title>
+    <th:block th:replace="root.html :: stylesheet"></th:block>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+    <th:block th:insert="root :: header"></th:block>
+    <th:block th:insert="root :: sidebar"></th:block>
+
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Pendataan / Penilaian
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Pendataan / Penilaian</a></li>
+                <li class="active">Entry SPOP</li>
+            </ol>
+        </section>
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Horizontal Form -->
+                    <div class="box box-info">
+                        <!-- form start -->
+                        <div class="form-horizontal">
+                            <div class="box-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="col-md-6">
+                                            <div class="box-header with-border">
+                                                <h3 class="box-title">Data Objek Pajak</h3>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Jenis Transaksi</label>
+                                                <div class="col-sm-10">
+                                                    <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                                        <option selected="selected">Perekaman Data</option>
+                                                        <option>Pemuktahiran Data</option>
+                                                        <option>Penghapusan Data</option>
+                                                    </select>
+                                                </div>
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">NOP</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="inputNOP" placeholder="Nomor Objek Pajak" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">NOP Bersama</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="inputNOPBersama" placeholder="NOP Bersama" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">NOP Asal</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="inputNOPAsal" placeholder="NOP Asal" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">NOP SPPT Lama</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="inputNOPSPPTLama" placeholder="NOP SPPT Lama" />
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="box-header with-border">
+                                                <h3 class="box-title">Data Letak Objek Pajak</h3>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Nama Jalan</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="inputNamaJalan" placeholder="Nama Jalan" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Blok</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="inputBlok" placeholder="Blok" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Kelurahan / Desa</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="inputKelurahan" placeholder="Kelurahan / Desa" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">RT</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="inputRT" placeholder="RT" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">RW</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="inputRW" placeholder="RW" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title">Data Subjek Pajak</h3>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Pekerjaan</label>
+                                                <div class="col-sm-10">
+                                                    <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                                        <option selected="selected">Pemilik</option>
+                                                        <option>PNS</option>
+                                                        <option>ABRI</option>
+                                                        <option>Pensiunan</option>
+                                                        <option>Badan</option>
+                                                        <option>Lainnya</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Status</label>
+                                                <div class="col-sm-10">
+                                                    <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                                        <option selected="selected">Pemilik</option>
+                                                        <option>Penyewa</option>
+                                                        <option>Pengelola</option>
+                                                        <option>Pemakai</option>
+                                                        <option>Sengketa</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Nama Subjek Pajak</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="inputNamaSubjekPajak1" placeholder="Nama Subjek Pajak" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">NPWP</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="inputNPWP" placeholder="NPWP /">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Nama Jalan</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="inputNamaJalan2" placeholder="Nama Jalan" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Blok</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="inputBlok2" placeholder="Blok" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Kelurahan / Desa</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="inputKelurahan2" placeholder="Kelurahan / Desa" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">RT</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="inputRT2" placeholder="RT" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">RW</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="inputRW2" placeholder="RW" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title">Data Tanah</h3>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Luas Tanah</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="inputLuasTanah" placeholder="Luas Tanah (m2)" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Zona Nilai Tanah</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="inputNilaiTanah" placeholder="Zona Nilai Tanah" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Jenis tanah</label>
+                                                <div class="col-sm-10">
+                                                    <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                                        <option selected="selected">Tanah + Bangunan</option>
+                                                        <option>Kavling Siap Bangun</option>
+                                                        <option>Tanah Kosong</option>
+                                                        <option>Fasilitas Umum</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-info pull-right">Simpan</button>
+                        </div>
+                        <!-- /.box-footer -->
+                    </div>
+
+
+                </div>
+
+                <!-- /.box -->
+                <!-- general form elements disabled -->
+
+            </div>
+            <!--/.col (right) -->
+    </div>
+    </section>
+
+</div>
+
+
+    <th:block th:insert="root :: footer"></th:block>
+    <th:block th:insert="root :: control-sidebar"></th:block>
+</div>
+<th:block th:insert="root :: script"></th:block>
+
+</body>
+</html>

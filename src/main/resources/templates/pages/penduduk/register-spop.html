@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head lang="en">
+    <th:block th:replace="root.html :: stylesheet"></th:block>
+</head>
+<body class="hold-transition skin-blue sidebar-mini fixed">
+<div class="wrapper">
+    <th:block th:insert="root :: header"></th:block>
+    <th:block th:insert="root :: sidebar"></th:block>
+
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Pendataan / Penilaian
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Pendataan / Penilaian</a></li>
+                <li class="active">[[${subTitle}]]</li>
+            </ol>
+        </section>
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Horizontal Form -->
+                    <div class="box box-info">
+                        <!-- form start -->
+                        <form class="form-horizontal" th:action="'/penduduk/permohonan-op/edit/'+${spopBaru.permohonanOp.getId()}+'/register-spop'" method="post" enctype="multipart/form-data">
+                            <div class="form-horizontal">
+                                <div class="box-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="col-md-6">
+                                                <div class="box-header with-border">
+                                                    <h3 class="box-title">Data Objek Pajak</h3>
+                                                </div>
+                                                <div class="form-group">
+                                                        <label class="col-sm-2 control-label">NOP</label>
+                                                    <div class="col-sm-10">
+                                                        <input th:type="hidden" name="penduduk" th:field="${spopBaru.permohonanOp}" />
+                                                        <input th:field="${spopBaru.nop}" type="text" class="form-control" id="inputNOP" placeholder="Nomor Objek Pajak" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label">NOP Bersama</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" th:field="${spopBaru.nopBersama}" class="form-control" id="inputNOPBersama" placeholder="NOP Bersama" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label">NOP Asal</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" th:field="${spopBaru.nopAsal}" class="form-control" id="inputNOPAsal" placeholder="NOP Asal" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label">NOP SPPT Lama</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" th:field="${spopBaru.nopSPPTLama}" class="form-control" id="inputNOPSPPTLama" placeholder="NOP SPPT Lama" />
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="box-header with-border">
+                                                    <h3 class="box-title">Data Letak Objek Pajak</h3>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label">Nama Jalan</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" th:field="${spopBaru.namaJalanOP}" class="form-control" id="inputNamaJalan" placeholder="Nama Jalan" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label">Blok</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" th:field="${spopBaru.blokOP}" class="form-control" id="inputBlok" placeholder="Blok" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label">Kelurahan / Desa</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" th:field="${spopBaru.kelurahaOP}" class="form-control" id="inputKelurahan" placeholder="Kelurahan / Desa" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label">RT</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" th:field="${spopBaru.rtop}" class="form-control" id="inputRT" placeholder="RT" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label">RW</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" th:field="${spopBaru.rwop}" class="form-control" id="inputRW" placeholder="RW" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="box-header with-border">
+                                                <h3 class="box-title">Data Subjek Pajak</h3>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label">Pekerjaan</label>
+                                                    <div class="col-sm-10">
+                                                        <select th:field="${spopBaru.pekerjaanSP}" class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                                            <option th:value="'PNS'" selected>PNS</option>
+                                                            <option th:value="'ABRI'">ABRI</option>
+                                                            <option th:value="'Pensiunan'">Pensiunan</option>
+                                                            <option th:value="'Badan'">Badan</option>
+                                                            <option th:value="'Lainnya'">Lainnya</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label">Status</label>
+                                                    <div class="col-sm-10">
+                                                        <select th:field="${spopBaru.statusSP}" class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                                            <option th:value="'Pemilik'" selected="selected">Pemilik</option>
+                                                            <option th:value="'Penyewa'">Penyewa</option>
+                                                            <option th:value="'Pengelola'">Pengelola</option>
+                                                            <option th:value="'Pemakai'">Pemakai</option>
+                                                            <option th:value="'Sengketa'">Sengketa</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label">Nama Subjek Pajak</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" th:field="${spopBaru.namaSP}" class="form-control" id="inputNamaSubjekPajak1" placeholder="Nama Subjek Pajak" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label">NPWP</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" th:field="${spopBaru.npwp}" class="form-control" id="inputNPWP" placeholder="NPWP /">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label">Nama Jalan</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" th:field="${spopBaru.namaJalanSP}" class="form-control" id="inputNamaJalan2" placeholder="Nama Jalan" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label">Blok</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" th:field="${spopBaru.blokSP}" class="form-control" id="inputBlok2" placeholder="Blok" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label">Kelurahan / Desa</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" th:field="${spopBaru.kelurahanSP}" class="form-control" id="inputKelurahan2" placeholder="Kelurahan / Desa" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label">RT</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" th:field="${spopBaru.rtsp}" class="form-control" id="inputRT2" placeholder="RT" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label">RW</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" th:field="${spopBaru.rwsp}" class="form-control" id="inputRW2" placeholder="RW" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="col-md-6">
+                                                <div class="box-header with-border">
+                                                    <h3 class="box-title">Data Tanah</h3>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label">Luas Tanah</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" th:field="${spopBaru.luasTanah}" class="form-control" id="inputLuasTanah" placeholder="Luas Tanah (m2)" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label">Zona Nilai Tanah</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" th:field="${spopBaru.zonaNilaiTanah}" class="form-control" id="inputNilaiTanah" placeholder="Zona Nilai Tanah" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label">Jenis tanah</label>
+                                                    <div class="col-sm-10">
+                                                        <select th:field="${spopBaru.jenisTanah}" class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                                            <option th:value="'Tanah + Bangunan'" selected="selected">Tanah + Bangunan</option>
+                                                            <option th:value="'Kavling Siap Bangun'" >Kavling Siap Bangun</option>
+                                                            <option th:value="'Tanah Kosong'">Tanah Kosong</option>
+                                                            <option th:value="'Fasilitas Umum'">Fasilitas Umum</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="box-header with-border">
+                                                    <h3 class="box-title">Berkas Pendukung</h3>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label">Identitas Diri</label>
+                                                    <input type="file" name="fileIdentitasDiriM" required accept="application/pdf" />
+                                                    <p class="help-block">Format file harus pdf</p>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label">Bukti Surat Tanah</label>
+                                                    <input type="file" name="fileBuktiSuratTanahM" required accept="application/pdf"/>
+                                                    <p class="help-block">Format file harus pdf</p>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label">Bukti Surat Bangunan</label>
+                                                    <input type="file" name="fileBuktiSuratBangunanM" required accept="application/pdf"/>
+                                                    <p class="help-block">Format file harus pdf</p>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label">Bukti NPWP</label>
+                                                    <input type="file" name="fileNpwpM" required accept="application/pdf"/>
+                                                    <p class="help-block">Format file harus pdf</p>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label">Surat Kuasa</label>
+                                                    <input type="file" name="fileSuratKuasaM" required accept="application/pdf"/>
+                                                    <p class="help-block">Format file harus pdf</p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer">
+                                <button type="submit" class="btn btn-info pull-right">Simpan</button>
+                            </div>
+                            <!-- /.box-footer -->
+                        </form>
+                    </div>
+
+
+                </div>
+
+                <!-- /.box -->
+                <!-- general form elements disabled -->
+
+            </div>
+            <!--/.col (right) -->
+        </section>
+
+    </div>
+
+
+    <th:block th:insert="root :: footer"></th:block>
+    <th:block th:insert="root :: control-sidebar"></th:block>
+</div>
+<th:block th:insert="root :: script"></th:block>
+
+</body>
+</html>
